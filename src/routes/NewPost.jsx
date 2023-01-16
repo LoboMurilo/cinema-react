@@ -7,9 +7,12 @@ import { useNavigate } from 'react-router-dom';
 
 
 
+
+
 import './NewPost.css'
 
 const NewPost = () => {
+
 
   const navigate = useNavigate()
 
@@ -23,13 +26,10 @@ const NewPost = () => {
     e.preventDefault();
 
     const post = {nome, ano, descricao, duracao, poster, userId: 1 };
-    await blogFetch.post("/drama", {
-      body: post,
-    });
+    await blogFetch.post("/drama",post);
 
     navigate("/");
   }
-
 
 
   return <div className="new-post">
@@ -85,7 +85,8 @@ const NewPost = () => {
           onChange={(e) => setPoster(e.target.value)}
         />
       </div>
-
+        
+      
       <input type="submit" value="Cadastrar" className="btn"/>
 
     </form>

@@ -7,6 +7,7 @@ import {createBrowserRouter, RouterProvider, Route} from 'react-router-dom';
 //páginas
 import Home from './routes/Home';
 import NewPost from './routes/NewPost';
+import Update from './routes/Update';
 
 import './index.css'
 
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/new",
         element: <NewPost />,
+      },
+      {
+        path: "/update/:id",
+        element: <Update />,
       },
     ],
   }

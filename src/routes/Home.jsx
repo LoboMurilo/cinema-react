@@ -10,6 +10,11 @@ const Home = () => {
 
   const [posts, setPosts] = useState([])
 
+  const deletar = async(id) => {
+    await blogFetch.delete(`/drama/${id}`).then((data) => console.log(data));
+    window.location.reload();
+  }
+
   const getPosts = async() => {
     
     try {
@@ -29,6 +34,8 @@ const Home = () => {
 
   }
 
+ 
+
   useEffect(() => {
     getPosts();
   }, [])
@@ -46,7 +53,10 @@ const Home = () => {
             <p>
               <img src={post.poster} alt="" width="150px" />
             </p>
-            <Link to={`/posts/${post.id}`} className="btn">Ler mais</Link>
+            <p>
+              <Link to={`/update/${post.id}`} className="btn">Atualizar</Link>
+            </p>
+            <button onClick={() => deletar(post.id)} className="btn">Excluir</button>
           </div>
         ))
       )}
